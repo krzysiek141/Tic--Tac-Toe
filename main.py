@@ -18,19 +18,16 @@ player_1 = Player()
 player_1.symbol = input("Choose the symbol for the first player\n>>> ")
 player_2 = Player()
 player_2.symbol = input("Choose the symbol for the second player\n>>> ")
-
 board = Board()
 
 run_the_game = True
 while run_the_game:
     take_a_turn(player_1)
-    if not player_1.victory:
+    if not player_1 is Player.winner:
         take_a_turn(player_2)
-        if player_2.victory:
-            winner = player_2
+        if player_2 is Player.winner:
             run_the_game = False
     else:
-        winner = player_1
         run_the_game = False
 board.show()
-print("Bye bye")
+print(f"The winner is {Player.winner.symbol}! Congratulations :)")
