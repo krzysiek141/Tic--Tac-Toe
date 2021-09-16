@@ -28,9 +28,14 @@ class Player:
         diagonal_2 = np.diagonal(np.fliplr(bool_board))
         if np.all(diagonal_1) or np.all(diagonal_2) == True:
             self.__class__.winner = self 
-    
-    @staticmethod
-    def give_coordinates():
-        cor_row = int(input("Choose the row number\n>>> "))
-        cor_column = int(input("Choose the column number\n>>> "))
-        return (cor_row, cor_column)
+
+    def give_coordinates(self):
+        incorrect_nums = True
+        while incorrect_nums:
+            coor_row = int(input(f"Player '{self.symbol}' choose the row number\n>>> "))
+            coor_column = int(input(f"Player '{self.symbol}' choose the column number\n>>> "))
+            if (coor_row >= 1) and (coor_row <= 3) and (coor_column >= 1) and (coor_column <= 3):
+                incorrect_nums = False
+            else:
+                print("Row and column numbers must be in the range of <1, 3>. Choose again.")
+        return (coor_row, coor_column)

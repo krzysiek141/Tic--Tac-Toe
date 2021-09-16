@@ -1,5 +1,6 @@
 from players import Player
 from board import Board
+import ascii_art
 
 
 def take_a_turn(player: Player):
@@ -14,6 +15,8 @@ def take_a_turn(player: Player):
     player.check_for_victory(board.core)
 
 
+print("Welcome to the game:")
+print(ascii_art.logo)
 player_1 = Player()
 player_1.symbol = input("Choose the symbol for the first player\n>>> ")
 player_2 = Player()
@@ -30,4 +33,5 @@ while run_the_game:
     else:
         run_the_game = False
 board.show()
-print(f"The winner is {Player.winner.symbol}! Congratulations :)")
+print(f"The winner is player '{Player.winner.symbol}'. Congratulations :)")
+print(ascii_art.end)
